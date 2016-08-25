@@ -78,8 +78,8 @@ class BadConsequence
       add=true
       
       v.each do |t|
-        if @specificVisibleTreasures.include? t
-          if v.count(t)==2 && @specificVisibleTreasures.count(t.type)==1
+        if @specificVisibleTreasures.include? t.type
+          if @specificVisibleTreasures.count(t.type)==1
             if add
               add = false
               newVisibleTreasuresBad << t.type
@@ -92,8 +92,8 @@ class BadConsequence
       add=true
       
       h.each do |t|
-        if @specificHiddenTreasures.include? t
-          if h.count(t)==2 && @specificHiddenTreasures.count(t.type)==1
+        if @specificHiddenTreasures.include? t.type
+          if @specificHiddenTreasures.count(t.type)==1
             if add
               add = false
               newHiddenTreasuresBad << t.type
@@ -101,6 +101,7 @@ class BadConsequence
           else
             newHiddenTreasuresBad << t.type
           end
+          
         end
       end
       BadConsequence.newSpecificTreasures(@text, 0, newVisibleTreasuresBad, newHiddenTreasuresBad) #return
