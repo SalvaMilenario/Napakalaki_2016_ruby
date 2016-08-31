@@ -4,10 +4,12 @@
 require_relative 'TreasureKind.rb'
 require_relative 'Prize.rb'
 require_relative 'Monster.rb'
-require_relative 'BadConsequence.rb'
-require_relative 'Treasures.rb'
+require_relative 'NumericBadConsequence.rb'
+require_relative 'DeathBadConsequence.rb'
+require_relative 'SpecificBadConsequence.rb'
 require_relative 'CardDealer.rb'
 require_relative 'Dice.rb'
+
 module NapakalakiGame
 
 class Player
@@ -18,7 +20,7 @@ class Player
   attr_writer :pendingBadConsequence
   attr_accessor :canISteal, :enemy
   
-  def initialize(name, l=1, d=true, v =Array.new, h=Array.new, p=BadConsequence.newNumberOfTreasures("Vacio", 0, 0, 0))
+  def initialize(name, l=1, d=true, v =Array.new, h=Array.new, p=NumericBadConsequence.new(name,0,0,0))
       @level = l
       @name = name
       @dead = d
