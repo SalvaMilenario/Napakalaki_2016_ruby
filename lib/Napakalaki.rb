@@ -4,6 +4,7 @@
 require_relative 'Treasures.rb'
 require_relative 'Monster.rb'
 require_relative 'Player.rb'
+require_relative 'CultistPlayer.rb'
 require_relative 'NumericBadConsequence.rb'
 require_relative 'DeathBadConsequence.rb'
 require_relative 'SpecificBadConsequence.rb'
@@ -59,12 +60,12 @@ class Napakalaki
   
   def developCombat 
     result = @currentPlayer.combat(@currentMonster)
-    if resultadoCombate == CombatResult::LOSEANDCONVERT
+    if result == CombatResult::LOSEANDCONVERT
       c = @dealer.nextCultist
       newCultist = CultistPlayer.new(@currentPlayer, c)
        @players.each do |p|
          if p==@currentPlayer
-           p=newCultiste
+           p=newCultist
          else
            if p.enemy==@currentPlayer
              p.enemy=newCultist

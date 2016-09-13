@@ -18,14 +18,20 @@ class NumericBadConsequence < BadConsequence
   end
   
   def substractHiddenTreasure(t)
-    nHiddenTreasures = (nHiddenTreasures-1) < 0 ? 0 : nHiddenTreasures-1
+    @nHiddenTreasures = (@nHiddenTreasures-1) < 0 ? 0 : @nHiddenTreasures-1
   end
   
   def adjustToFitTreasureLists(v, h)
-        #Número de tesoros visibles a quitar
-        minVisibleTreasures = nVisibleTreasures > v.size() ? v.size() : nVisibleTreasures
-        minHiddenTreasures = nHiddenTreasures > h.size() ? h.size() : nHiddenTreasures
-        new(text, 0, minVisibleTreasures, minHiddenTreasures)
+    #Número de tesoros visibles a quitar
+    minVisibleTreasures = v.count
+    minHiddenTreasures = h.count
+    if (@nVisibleTreasures < minVisibleTreasures)
+        minVisibleTreasures=@nVisibleTreasures
+    end
+    if (@nHiddenTreasures < minHiddenTreasures)
+      minHiddenTreasures = @nHiddenTreasures
+    end
+    NumericBadConsequence.new(text, 0, minVisibleTreasures, minHiddenTreasures)
   end
   
   def isEmpty

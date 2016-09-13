@@ -115,7 +115,7 @@ class CardDealer
     # el segundo specificHiddenTreasures
     # Análogamente si no es array es nVisibleTreasures y nHiddenTreasures
     badConsequence = NumericBadConsequence.new("Pierdes todos tus tesoros visibles.", 
-                                                        0, badConsequence.MAXTREASURES, 0)
+                                                        0, BadConsequence.MAXTREASURES, 0)
     prize = Prize.new(3,1)
     # Añade un nuevo monstruo al final del array
     @unusedMonsters << Monster.new("El gorrón en el umbral", 10, badConsequence, prize)
@@ -260,7 +260,7 @@ class CardDealer
      @unusedMonsters << Monster.new("El mal indecible impronunciable", 10, badConsequence, prize, -2)
 
     #Testigos Oculares
-    badConsequence = NumericBadConsequence.new("Pierdes tus tesoros visibles. Jajaja.", 0, badConsequence.MAXTREASURES, 0)
+    badConsequence = NumericBadConsequence.new("Pierdes tus tesoros visibles. Jajaja.", 0, BadConsequence.MAXTREASURES, 0)
      prize = Prize.new(2,1)
      @unusedMonsters<< Monster.new("Testigos Oculares", 6, badConsequence, prize, 2)
 
@@ -296,7 +296,6 @@ class CardDealer
   
   def initCultistCardDeck
     @unusedCultists = Array.new
-    Cultist.new("name", 1)
     @unusedCultists << Cultist.new("+1 por cada sectario en juego."+"\n\tNo puedes dejar de ser sectario.", 1)
     @unusedCultists << Cultist.new("+2 por cada sectario en juego."+"\n\tNo puedes dejar de ser sectario.", 2)
     @unusedCultists << Cultist.new("+1 por cada sectario en juego."+"\n\tNo puedes dejar de ser sectario.", 1)
@@ -343,7 +342,7 @@ class CardDealer
   end
   
   def nextCultist
-    @unusedCultist.pop
+    @unusedCultists.pop
   end
   
   def initCards

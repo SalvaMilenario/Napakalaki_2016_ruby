@@ -52,13 +52,11 @@ class SpecificBadConsequence < BadConsequence
         newHiddenTreasuresBad << t.type
       end
     end
-    new(@text, 0, newVisibleTreasuresBad, newHiddenTreasuresBad) #return
+    SpecificBadConsequence.new(@text, 0, newVisibleTreasuresBad, newHiddenTreasuresBad) #return
   end
 
-  def isUmpty
-    super.levels==0 &&
-      @specificVisibleTreasures.isEmpty() &&
-      @specificHiddenTreasures.isEmpty();
+  def isEmpty
+    (@levels==0) && (@specificVisibleTreasures.empty?) && (@specificHiddenTreasures.empty?)
   end
   def to_s
     textoInicial = "\n\tTexto = " + @text.to_s + 

@@ -17,10 +17,9 @@ class Player
   @@MAXLEVEL=10
 
   attr_reader :dead, :level, :visibleTreasures, :hiddenTreasures, :name
-  attr_writer :pendingBadConsequence
-  attr_accessor :canISteal, :enemy
+  attr_accessor :canISteal, :enemy, :pendingBadConsequence
   
-  def initialize(name, l=1, d=true, v =Array.new, h=Array.new, p=NumericBadConsequence.new(name,0,0,0))
+  def initialize(name, l=1, d=true, v =Array.new, h=Array.new, p=NumericBadConsequence.new("name",0,0,0))
       @level = l
       @name = name
       @dead = d
@@ -122,7 +121,7 @@ class Player
   end
   
   def shouldConvert
-    Dice.instace.nextNumber==1
+    Dice.instance.nextNumber==1
   end
   
   public ########################### Zona pública #############################
@@ -181,7 +180,7 @@ class Player
   end
   
   def validState
-    (@pendingBadConsequence.isEmpty) && (@hiddenTreasures.size<=4)
+    (@pendingBadConsequence.isEmpty) && (@hiddenTreasures.size<=4)||(@dead&&(@hiddenTreasures.empty? &&@visibleTreasures.empty?))
   end
   
   def initTreasures

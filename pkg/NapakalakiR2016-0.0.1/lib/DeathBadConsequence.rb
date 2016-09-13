@@ -22,17 +22,23 @@ class DeathBadConsequence < NumericBadConsequence
   end
   
   def isEmpty
-    !super.death
+    false
   end
     
   def to_s
-    "Mal royo:\n\tText = " + super.text + 
-      " \n\tLevels = " + super.levels.to_s + 
-      " \n\tDeath = " + super.death
+    nombre = "Mal royo:\n\tText = " + @text 
+    nivel = " \n\tLevels = " + @levels.to_s
+    muerte = ""
+    if @death
+      muerte = " \n\tDeath = true"
+    else
+      muerte = " \n\tDeath = false"
+    end
+    nombre + nivel + muerte
   end
   
   def adjustToFitTreasureLists(v, h)
-    this
+    self
   end
   
 end

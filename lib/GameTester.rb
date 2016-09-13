@@ -49,6 +49,8 @@ class GameTester
               puts "\n\n Ganaste el combate"
             when NapakalakiGame::CombatResult::LOSE then
               puts "\n\n Has perdido el combate, te toca cumplir el mal rollo"
+            when NapakalakiGame::CombatResult::LOSEANDCONVERT
+              puts "\n\n Te conviertes en sectario"
            end #case
            if (combatResult != NapakalakiGame::CombatResult::WINGAME) then
             begin #Hasta que se avance de turno 
